@@ -292,7 +292,8 @@ static void handle_client_request(void *addr, void *data, size_t len,
 	if (opts[-4] == DHCPV6_MSG_ADVERTISE || opts[-4] == DHCPV6_MSG_REPLY || opts[-4] == DHCPV6_MSG_RELAY_REPL)
 		return;
 
-	if (!IN6_IS_ADDR_MULTICAST((struct in6_addr *)dest_addr) && iov[IOV_NESTED].iov_len == 0 &&
+	//if (!IN6_IS_ADDR_MULTICAST((struct in6_addr *)dest_addr) && iov[IOV_NESTED].iov_len == 0 &&
+	if (iov[IOV_NESTED].iov_len == 0 &&
 		(opts[-4] == DHCPV6_MSG_SOLICIT || opts[-4] == DHCPV6_MSG_CONFIRM ||
 		 opts[-4] == DHCPV6_MSG_REBIND || opts[-4] == DHCPV6_MSG_INFORMATION_REQUEST))
 		return;
